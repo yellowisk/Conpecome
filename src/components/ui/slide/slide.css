@@ -1,0 +1,19 @@
+.slide {
+    flex: 0 0 calc(50% - 1rem);
+    min-width: 0;
+    padding-left: 1rem;
+    margin-bottom: 1rem;
+    transition: opacity 0.2s ease-in-out;
+  }
+  
+.img {
+  border-radius: 3rem;
+  display: block;
+  height: 14rem;
+  width: 100%;
+  object-fit: cover;
+}
+
+.slide:not(.is-snapped) {
+  opacity: 0.46;
+}

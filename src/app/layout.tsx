@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="">
       <body
-        className={twMerge(inter.className, "bg-orange-500 text-zinc-200")}
+        className={twMerge(inter.className, "bg-orange-600 text-zinc-200")}
         >
           <ThemeProvider 
             attribute="class"
