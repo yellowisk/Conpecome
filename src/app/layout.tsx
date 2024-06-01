@@ -16,12 +16,11 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode; }>) {
   return (
     <html lang="en" className="">
-      <body
-        className={twMerge(inter.className, "bg-orange-600 text-zinc-200")}
-        >
+      <body 
+        className={twMerge(inter.className, )}>
           <ThemeProvider 
             attribute="class"
-            defaultTheme="dark"
+            defaultTheme="light"
             enableSystem
             disableTransitionOnChange
           >
