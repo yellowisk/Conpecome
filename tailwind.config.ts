@@ -1,9 +1,12 @@
 import type { Config } from "tailwindcss"
 
+const {nextui} = require('@nextui-org/react')
+
 const config = {
   content: [
     "./pages/**/*.{ts,tsx}",
     "./components/**/*.{ts,tsx}",
+    "./context/**/*.{ts,tsx}",
     "./src/assets/**/*.{ts,tsx}",
     "./app/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
@@ -27,6 +30,19 @@ const config = {
       })
     },
   },
+  plugins: [
+    nextui({
+      themes: {
+        "orange": {
+                extend: 'light',
+                colors: {
+                  background: "#ea580c",
+                  primary: '#e4e4e7',
+                }
+              },
+          }
+        })
+  ],
 } satisfies Config
 
 export default config
