@@ -2,9 +2,6 @@ import React, { use } from "react";
 import ImageContent from "../image";
 import { Button } from "../button";
 import "./slide.css";
-import { useState } from "react";
-
-const  [quantity, setQuantity] = useState(0);
 
 const Slide: React.FC<{ image: string; title: string; price: string; className?: string }> = ({ image, title, price, className }) => {
   return (
