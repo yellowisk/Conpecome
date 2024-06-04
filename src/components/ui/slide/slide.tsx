@@ -1,22 +1,37 @@
-import React, { use } from "react";
-import ImageContent from "../image";
+import React from "react";
+import { Box, Card, CardHeader } from "@mui/material";
 import { Button } from "../button";
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
+import Typography from '@mui/material/Typography';
+
 import "./slide.css";
 
 const Slide: React.FC<{ image: string; title: string; price: string; className?: string }> = ({ image, title, price, className }) => {
+  
   return (
-    <div className={`relative slide`}>
-      <div className="flex flex-col justify-center items-center">
-        <p className="text-2xl font-bold text-white">{title}</p>
-        <p className="text-2xl font-bold font-outline-2 text-amber-500">{price}</p>
-      </div>
-      <ImageContent src={image} alt={title} className='img h-36 w-36 object-cover rounded-md' />
-      <div className='absolute inset-0 flex justify-evenly items-end'>
-          <Button variant="subtract" size="xl" transition="floatZoom">-</Button>
-          <p className="mb-3 text-5xl font-bold font-outline-2 text-amber-500">0</p>
-          <Button variant="add" size="xl" transition="floatZoom">+</Button>
-      </div>
-
+    <div className="relative-slide mx-4">
+      <Card sx={{ maxWidth: 345 }} className="px-8 bg-orange-transparent rounded-xl my-4">
+        <CardHeader sx={{ textAlign: 'center' }} className="text-tertiary px-0 py-0 m-2 bg-orange-strong rounded-full" classes={{}} title={'$'+price} titleTypographyProps={{variant: 'h6'}}/>
+        <div className="flex justify-center">  
+          <CardMedia
+            sx={{ height: 140, width:150 }}
+            image={image}
+            title={title}
+          />
+        </div>
+        <CardContent className="flex justify-center">
+          <Typography sx={{ textAlign: 'center' }} className="text-xl font-medium text-primary">
+            {title}
+          </Typography>
+        </CardContent>
+      <CardActions className="flex justify-around items-center">
+            <Button variant='serene' size="default">-</Button>
+            <p className="text-2xl font-medium text-primary">0</p>
+            <Button variant='serene' size="default">+</Button>
+        </CardActions>
+      </Card>
     </div>
   )
 };
