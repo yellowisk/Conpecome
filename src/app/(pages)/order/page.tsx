@@ -10,6 +10,8 @@ import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import { useState } from 'react';
 import Pesquisar from "@components/ui/searchbar/searchbar"
+import { Check } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 
 export default function Order() {
     const OPTIONS: EmblaOptionsType = { dragFree: true, loop: false}
@@ -44,6 +46,16 @@ export default function Order() {
                     <EmblaCarousel slides={SLIDES} options={OPTIONS} />
                 </TabPanel>
             </TabContext>
+            <Box sx={{ display: 'flex', justifyContent: 'end', alignItems: 'start', width: '90%', height: '10%'}}>
+                <div className="flex">
+                    <p className='text-bold text-3xl text-red-700'>Já  pode?</p>
+                    <Button className='hover:drop-shadow-orange' transition='active' asChild>
+                        <a href='/checkout'>
+                            <Check className="bg-red-700 text-tertiary rounded-md" size={34} />
+                        </a>
+                    </Button>
+                </div>
+            </Box>
         </div>
     )
 }

@@ -31,9 +31,9 @@ const buttonVariants = cva(
       transition: {
         default: "transition ease-in-out duration-300",
         hover: "hover:scale-105",
-        active: "active:scale-95",
+        active: "hover:-translate-y-0.5 ease-in-out duration-100 active:scale-95",
         float: "hover:-translate-y-1 hover:scale-90 hover:text-3xl transition ease-in-out delay duration-100",
-        shadow: "hover:drop-shadow-glow transition ease-in-out delay hover:-translate-y-1 hover:scale-110 duration-300"
+        shadow: "hover:drop-shadow-white transition ease-in-out delay hover:-translate-y-1 hover:scale-110 duration-300"
       },
     },
     defaultVariants: {

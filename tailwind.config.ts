@@ -21,9 +21,13 @@ const config = {
         "font-bold font-outline-2 text-amber-500"
       },
       dropShadow: {
-        glow: [
+        white: [
           "0 0px 20px rgba(255,255, 255, 0.45)",
           "0 0px 65px rgba(255, 255,255, 0.4)"
+        ],
+        orange: [
+          "0 0px 20px rgba(255, 153, 0, 0.45)",
+          "0 0px 65px rgba(255, 153, 0, 0.4)"
         ]
       },
       caretColor: theme => ({
