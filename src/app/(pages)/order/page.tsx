@@ -12,7 +12,7 @@ import { useState } from 'react';
 import Pesquisar from "@components/ui/searchbar/searchbar"
 
 export default function Order() {
-    const OPTIONS: EmblaOptionsType = { dragFree: true, loop: true}
+    const OPTIONS: EmblaOptionsType = { dragFree: true, loop: false}
     const SLIDE_COUNT = Object.keys(pictures).length;
     const SLIDES = Array.from(Array(SLIDE_COUNT).keys());
     const [value, setValue] = useState("1");
@@ -22,8 +22,8 @@ export default function Order() {
     };
 
     return (        
-        <div className='flex flex-col items-center caret-transparent h-screen '>
-            <div className="h-screen flex items-center justify-center">
+        <div className='flex flex-col justify-evenly items-center caret-transparent h-screen'>
+            <div className="flex items-center justify-center">
                 <Pesquisar/> 
             </div>
             <TabContext value={value}>
