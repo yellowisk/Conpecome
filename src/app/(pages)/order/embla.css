@@ -15,7 +15,7 @@
   .embla__container {
     backface-visibility: hidden;
     display: flex;
-    max-width: 80vw;
+    max-width: 90vw;
     touch-action: pan-y pinch-zoom;
     margin-left: calc(var(--slide-spacing) * -1);
   }
