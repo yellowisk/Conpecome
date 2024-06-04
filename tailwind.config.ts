@@ -1,3 +1,4 @@
+import { colors } from "@mui/material"
 import type { Config } from "tailwindcss"
 
 const {nextui} = require('@nextui-org/react')
@@ -33,13 +34,26 @@ const config = {
   plugins: [
     nextui({
       themes: {
-        "orange": {
-                extend: 'light',
+        "light": {
+          colors: {
+            background: "#ffffff",
+            primary: 'rgba(60, 47, 47, 1)',
+            secondary: '#6A6A6A',
+            tertiary: "rgb(241 245 249)",
+            orange: {
+              strong: '#FF5C00',
+              transparent: 'rgba(255, 153, 0, 0.25)',
+              serene: '#FF9633',
+              linear: '#FF7D02'
+            }
+          }
+        },
+        "dark": {
                 colors: {
                   background: "#ea580c",
                   primary: '#e4e4e7',
                 }
-              },
+          },
           }
         })
   ],
