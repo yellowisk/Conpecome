@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/button';
 import { Sandwich } from 'lucide-react';
 
 export default function App() {
-  const [isOrange, setIsOrange] = useState(true);
+  const [isOrange, setIsOrange] = useState(false);
 
   return (
     <div className="bg-orange-600 text-zinc-200 flex flex-col space-y-6 flex-1 items-center justify-center h-screen">
@@ -12,7 +12,7 @@ export default function App() {
         <Sandwich className="h-16 w-16" />
         <h1 className="text-4xl uppercase caret-transparent select-none font-semibold">Conpecome</h1>
       </div>
-      <Button className="caret-transparent hover:drop-shadow-glow transition ease-in-out delay hover:-translate-y-1 hover:scale-110 duration-300" asChild>
+      <Button variant='orange' transition='shadow' className="caret-transparent" asChild>
         <a href="/order">Aperte para ao mossar</a>
       </Button>
     </div>

@@ -10,16 +10,21 @@ const buttonVariants = cva(
     variants: {
       variant: {
         default:
-          "shadow-lg border border-red-200 shadow-red-500",
+          "bg-transparent",
+        orange:
+          "shadow-lg px-20 py-1 border border-red-200 shadow-red-500",
         subtract:
           "bg-blue-600 bg-opacity-85 ml-7 text-white text-xl",
         add:
-          "bg-green-600 bg-opacity-85 mr-7 text-white text-xl "
+          "bg-green-600 bg-opacity-85 mr-7 text-white text-xl",
+        serene:
+          "bg-orange-serene text-tertiary text-xl"
     },  
     size: {
         default: "h-9 px-4 py-2",
+        sh: "h-6 px-2 py-1",
         sm: "h-8 rounded-md px-3 text-xs",
-        lg: "h-10 rounded-md px-8",
+        lg: "h-10 rounded-md py-8 px-8",
         xl: "size-16 text-xl",
         icon: "h-9 w-9",
       },
@@ -27,7 +32,8 @@ const buttonVariants = cva(
         default: "transition ease-in-out duration-300",
         hover: "hover:scale-105",
         active: "active:scale-95",
-        floatZoom: "hover:-translate-y-1 hover:scale-90 hover:text-3xl transition ease-in-out delay duration-500",
+        float: "hover:-translate-y-1 hover:scale-90 hover:text-3xl transition ease-in-out delay duration-100",
+        shadow: "hover:drop-shadow-glow transition ease-in-out delay hover:-translate-y-1 hover:scale-110 duration-300"
       },
     },
     defaultVariants: {
