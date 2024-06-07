@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Box, Card, CardHeader } from "@mui/material";
 import { Button } from "../button";
 import CardActions from '@mui/material/CardActions';
@@ -9,7 +9,15 @@ import Typography from '@mui/material/Typography';
 import "./slide.css";
 
 const Slide: React.FC<{ image: string; title: string; price: string; className?: string }> = ({ image, title, price, className }) => {
-  
+
+  const [counter, setCount] = useState(0);
+  const onClick = () => {
+    setCount(c => c + 1);
+  };
+  const onClickDec = () => {
+    setCount(c => Math.max(c - 1, 0));
+  };
+
   return (
     <div className="relative-slide mx-4">
       <Card sx={{ maxWidth: 345 }} className="px-8 bg-orange-transparent rounded-xl my-4">
@@ -27,9 +35,9 @@ const Slide: React.FC<{ image: string; title: string; price: string; className?:
           </Typography>
         </CardContent>
       <CardActions className="flex justify-around items-center">
-            <Button variant='serene' size="default">-</Button>
-            <p className="text-2xl font-medium text-primary">0</p>
-            <Button variant='serene' size="default">+</Button>
+            <Button onClick={onClickDec} variant='serene' size="default" transition="active">-</Button>
+            <p className="text-2xl font-medium text-primary">{counter}</p>
+            <Button onClick={onClick} variant='serene' size="default" transition="active">+</Button>
         </CardActions>
       </Card>
     </div>
