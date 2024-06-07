@@ -12,7 +12,7 @@ const Slide: React.FC<{ image: string; title: string; price: string; className?:
 
   const [counter, setCount] = useState(0);
   const onClick = () => {
-    setCount(c => c + 1);
+    setCount(c => Math.min(c + 1, 20));
   };
   const onClickDec = () => {
     setCount(c => Math.max(c - 1, 0));
