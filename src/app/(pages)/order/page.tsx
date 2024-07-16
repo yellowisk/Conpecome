@@ -1,30 +1,69 @@
 "use client"
-import EmblaCarousel from '@/components/ui/carousel/EmblaCarousel'
-import { EmblaOptionsType } from 'embla-carousel'
-import pictures  from '@/assets/pictures/pictures'
-import "./embla.css"
+import EmblaCarousel from '@/components/ui/carousel/EmblaCarousel';
+import { EmblaOptionsType } from 'embla-carousel';
+import pictures  from '@/assets/pictures/pictures';
+import "./embla.css";
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import { useState } from 'react';
-import Pesquisar from "@components/ui/searchbar/searchbar"
-import { Check } from 'lucide-react'
-import { Button } from '@/components/ui/button'
+import { useRouter } from 'next/navigation';
+import Pesquisar from "@components/ui/searchbar/searchbar";
+import { Check } from 'lucide-react';
+import { Button } from '@/components/ui/button';
+import { Toaster, toast } from 'sonner';
 
 export default function Order() {
     const OPTIONS: EmblaOptionsType = { dragFree: true, loop: false}
     const SLIDE_COUNT = Object.keys(pictures).length;
     const SLIDES = Array.from(Array(SLIDE_COUNT).keys());
     const [value, setValue] = useState("1");
+    const router = useRouter();
+
+    const [counters, setCounters] = useState<number[]>(Array(SLIDE_COUNT).fill(0));
 
     const handleChange = (event: React.SyntheticEvent, newValue: string) => {
       setValue(newValue);
     };
 
-    return (        
+    const incrementCounter = (index: number) => {
+        setCounters(prev => {
+            const newCounters = [...prev];
+            newCounters[index] = Math.min(newCounters[index] + 1, 20);
+            return newCounters;
+        });
+    };
+
+    const decrementCounter = (index: number) => {
+        setCounters(prev => {
+            const newCounters = [...prev];
+            newCounters[index] = Math.max(newCounters[index] - 1, 0);
+            return newCounters;
+        });
+    };
+
+    const handleCheckout = () => {
+        const itemsBought = SLIDES.filter((index) => counters[index] > 0).map((index) => ({
+            name: pictures[index].name,
+            price: pictures[index].price,
+            quantity: counters[index],
+        }));
+
+        if (itemsBought.length === 0) {
+            toast.error('Selecione ao menos um item para comprar!');
+            return;
+        }
+
+        localStorage.setItem('items', JSON.stringify(itemsBought));
+
+        router.push(`/checkout`);
+    };
+
+    return (
         <div className='flex flex-col justify-evenly items-center caret-transparent h-screen'>
+            <Toaster position="bottom-left" richColors closeButton />
             <div className="flex items-center justify-center">
                 <Pesquisar/> 
             </div>
@@ -37,22 +76,41 @@ export default function Order() {
                     </TabList>
                 </Box>
                 <TabPanel value="1">
-                    <EmblaCarousel slides={SLIDES} options={OPTIONS} />
+                    <EmblaCarousel 
+                      slides={SLIDES} 
+                      type='sweet' 
+                      options={OPTIONS} 
+                      counters={counters}
+                      incrementCounter={incrementCounter}
+                      decrementCounter={decrementCounter}
+                    />
                 </TabPanel>
                 <TabPanel value="2">
-                    <EmblaCarousel slides={SLIDES} options={OPTIONS} />
+                    <EmblaCarousel 
+                      slides={SLIDES} 
+                      type='savory' 
+                      options={OPTIONS} 
+                      counters={counters}
+                      incrementCounter={incrementCounter}
+                      decrementCounter={decrementCounter}
+                    />
                 </TabPanel>
                 <TabPanel value="3">
-                    <EmblaCarousel slides={SLIDES} options={OPTIONS} />
+                    <EmblaCarousel 
+                      slides={SLIDES} 
+                      type='drink' 
+                      options={OPTIONS} 
+                      counters={counters}
+                      incrementCounter={incrementCounter}
+                      decrementCounter={decrementCounter}
+                    />
                 </TabPanel>
             </TabContext>
             <Box sx={{ display: 'flex', justifyContent: 'end', alignItems: 'start', width: '90%', height: '10%'}}>
                 <div className="flex">
-                    <p className='text-bold text-3xl text-red-700'>Já  pode?</p>
-                    <Button className='hover:drop-shadow-orange' transition='active' asChild>
-                        <a href='/checkout'>
-                            <Check className="bg-red-700 text-tertiary rounded-md" size={34} />
-                        </a>
+                    <p className='text-bold text-3xl text-orange-600'>Já  pode?</p>
+                    <Button className='hover:drop-shadow-orange' transition='active' onClick={handleCheckout}>
+                        <Check className="bg-orange-600 text-tertiary rounded-md" size={34} />
                     </Button>
                 </div>
             </Box>
