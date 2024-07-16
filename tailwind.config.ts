@@ -16,6 +16,10 @@ const config = {
   prefix: '',
   theme: {
     extend: {
+      fontFamily: {
+        roboto: ['var(--font-roboto)'],
+        poppins: ['var(--font-poppins)'],
+      },
       colors: {
         number:
         "font-bold font-outline-2 text-amber-500"

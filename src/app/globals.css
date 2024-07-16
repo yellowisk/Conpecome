@@ -14,3 +14,7 @@ body {
         -webkit-text-stroke: 4px rgb(158, 86, 3);
       }
 }
+
+.roboto {
+  font-family: 'Roboto', sans-serif;
+}
