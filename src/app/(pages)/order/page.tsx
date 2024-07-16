@@ -2,6 +2,7 @@
 import EmblaCarousel from '@/components/ui/carousel/EmblaCarousel';
 import { EmblaOptionsType } from 'embla-carousel';
 import pictures  from '@/assets/pictures/pictures';
+import { getStock } from '@/assets/pictures/pictures';
 import "./embla.css";
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
@@ -14,13 +15,25 @@ import Pesquisar from "@components/ui/searchbar/searchbar";
 import { Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Toaster, toast } from 'sonner';
+import { useEffect } from 'react';
 
 export default function Order() {
     const OPTIONS: EmblaOptionsType = { dragFree: true, loop: false}
     const SLIDE_COUNT = Object.keys(pictures).length;
     const SLIDES = Array.from(Array(SLIDE_COUNT).keys());
     const [value, setValue] = useState("1");
+    const [isLoading, setIsLoading] = useState<boolean>(true);
     const router = useRouter();
+
+    useEffect(() => {
+        getStock();
+        toast.loading('Carregando estoque...');
+        setTimeout(() => {
+            setIsLoading(false);
+            toast.dismiss();
+            toast.success('Estoque carregado!');
+        }, 2000);
+    }, []);
 
     const [counters, setCounters] = useState<number[]>(Array(SLIDE_COUNT).fill(0));
 
@@ -28,10 +41,15 @@ export default function Order() {
       setValue(newValue);
     };
 
-    const incrementCounter = (index: number) => {
+    const incrementCounter = (index: number, quantity: number) => {
         setCounters(prev => {
             const newCounters = [...prev];
-            newCounters[index] = Math.min(newCounters[index] + 1, 20);
+            newCounters[index] = Math.min(newCounters[index] + 1, quantity);
+
+            if (newCounters[index] + 1 > quantity) {
+                toast.info('Você atingiu o limite desse produto no estoque!');
+            }
+
             return newCounters;
         });
     };
@@ -46,6 +64,7 @@ export default function Order() {
 
     const handleCheckout = () => {
         const itemsBought = SLIDES.filter((index) => counters[index] > 0).map((index) => ({
+            id: index + 1,
             name: pictures[index].name,
             price: pictures[index].price,
             quantity: counters[index],
@@ -62,8 +81,11 @@ export default function Order() {
     };
 
     return (
+        <div>
+        {isLoading ? (
+            <p></p>
+        ) : (
         <div className='flex flex-col justify-evenly items-center caret-transparent h-screen'>
-            <Toaster position="bottom-left" richColors closeButton />
             <div className="flex items-center justify-center">
                 <Pesquisar/> 
             </div>
@@ -114,6 +136,9 @@ export default function Order() {
                     </Button>
                 </div>
             </Box>
+        </div>
+        )}
+        <Toaster position="bottom-left" richColors closeButton />
         </div>
     )
 }

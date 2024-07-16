@@ -16,7 +16,7 @@ type PropType = {
   type: string
   options?: EmblaOptionsType
   counters: number[]
-  incrementCounter: (index: number) => void
+  incrementCounter: (index: number, quantity: number) => void
   decrementCounter: (index: number) => void
 }
 
@@ -38,7 +38,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
   return (
     <div className="embla">
       <div className="embla__viewport shadow-inner" ref={emblaRef}>
-        <div className="embla__container">
+        <div className="embla__container select-none">
           {filteredSlides.map(index => (
             <Slide 
               key={index} 
@@ -46,7 +46,7 @@ const EmblaCarousel: React.FC<PropType> = (props) => {
               title={pictures[index].name} 
               price={pictures[index].price} 
               counter={counters[index]}
-              incrementCounter={() => incrementCounter(index)}
+              incrementCounter={() => incrementCounter(index, pictures[index].quantity)}
               decrementCounter={() => decrementCounter(index)}
             />
           ))}
