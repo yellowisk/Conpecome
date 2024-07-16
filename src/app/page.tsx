@@ -1,11 +1,8 @@
 'use client'
-import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Sandwich } from 'lucide-react';
 
 export default function App() {
-  const [isOrange, setIsOrange] = useState(false);
-
   return (
     <div className="bg-orange-600 text-zinc-200 flex flex-col space-y-6 flex-1 items-center justify-center h-screen">
       <div className="flex flex-row items-center justify-center gap-2 text-slate-50 hover:drop-shadow-glow transition duration-300">
