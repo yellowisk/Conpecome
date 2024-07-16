@@ -21,7 +21,7 @@ type SlideProps = {
 const Slide: React.FC<SlideProps> = ({ image, title, price, counter, incrementCounter, decrementCounter }) => {
   return (
     <div className="relative-slide mx-4">
-      <Card sx={{ maxWidth: 345 }} className="px-8 bg-orange-transparent rounded-xl my-4">
+      <Card sx={{ maxWidth: 345 }} style={{backgroundColor: 'rgba(255, 153, 0, 0.25)'}} className="px-8 rounded-xl my-4">
         <CardHeader sx={{ textAlign: 'center' }} className="text-tertiary px-0 py-0 m-2 bg-orange-strong rounded-full" title={'$'+price} titleTypographyProps={{variant: 'h6'}}/>
         <div className="flex justify-center">  
           <CardMedia
@@ -31,7 +31,7 @@ const Slide: React.FC<SlideProps> = ({ image, title, price, counter, incrementCo
           />
         </div>
         <CardContent className="flex justify-center">
-          <Typography sx={{ textAlign: 'center' }} className="text-xl font-medium text-primary">
+          <Typography sx={{ textAlign: 'center', fontWeight: 600 }} className="">
             {title}
           </Typography>
         </CardContent>

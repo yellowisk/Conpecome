@@ -86,15 +86,14 @@ export default function Order() {
             <p></p>
         ) : (
         <div className='flex flex-col justify-evenly items-center caret-transparent h-screen'>
-            <div className="flex items-center justify-center">
-                <Pesquisar/> 
-            </div>
             <TabContext value={value}>
-                <Box sx={{ borderBottom: 1, minWidth: 350, display: 'flex', justifyContent: 'space-around' }}>
-                    <TabList onChange={handleChange} aria-label="Food Tab">
-                        <Tab label="Doces" value="1" sx={{color: 'black'}}/>
-                        <Tab label="Salgados" value="2" />
-                        <Tab label="Bebidas" value="3" />
+                <Box sx={{ minWidth: 350, display: 'flex', justifyContent: 'space-around' }}>
+                    <TabList onChange={handleChange} aria-label="Food Tab" textColor='inherit' TabIndicatorProps={{ style: {
+                        backgroundColor: '#FF5C00'
+                    }}} >
+                        <Tab label="Doces" value="1" sx={{color: '#ff6600', fontWeight: 900}}/>
+                        <Tab label="Salgados" value="2" sx={{color: '#ff6600', fontWeight: 900}}/>
+                        <Tab label="Bebidas" value="3" sx={{color: '#ff6600', fontWeight: 900}}/>
                     </TabList>
                 </Box>
                 <TabPanel value="1">
