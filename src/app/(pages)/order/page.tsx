@@ -11,7 +11,6 @@ import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
-import Pesquisar from "@components/ui/searchbar/searchbar";
 import { Check } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Toaster, toast } from 'sonner';

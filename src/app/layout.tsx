@@ -12,7 +12,6 @@ export const metadata: Metadata = {
   description: "Conpec's snack HQ",
 };
 
-
 const roboto_init = Roboto({
   subsets: ['latin'],
   weight: ['100', '400', '500', '700', '900'],
