@@ -53,13 +53,15 @@ const config = {
             orange: {
               strong: '#FF5C00',
               transparent: 'rgba(255, 153, 0, 0.25)',
-              serene: '#FF9633', //font
-              linear: '#FF7D02', //ja paguei, //simbolo do pix, copiar
-              seashell: '#FFF4EF', //background-up
-              antique: '#FFE8D8', //background-bot
-              coquelicot: '#FF3D00', //"seu pedido"
-              apricot: '#FFCEB2', //em volta do codigo
-              pale: '#FFBCBD' //textinho
+              serene: '#FF9633',
+              linear: '#FF7D02', 
+              seashell: '#FFF4EF',
+              antique: '#FFE8D8',
+              peach: '#FFBE99',
+              coquelicot: '#FF3D00',
+              apricot: '#FFCEB2',
+              sandy:  '#FFD8B4',
+              pale: '#FFBCBD'
             },
             red: {
               imperial: '#EF2A39' //seta volta
