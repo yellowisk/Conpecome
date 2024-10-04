@@ -54,44 +54,46 @@ export default function Log() {
 
     return (
         <div className='flex flex-col space-y-3 w items-center caret-transparent h-screen bg-orange-seashell'>
-            <div className='flex flex-row justify-between w-screen h-1/6'>
+            <div className='flex flex-row justify-between w-screen'>
                 <div className='flex flex-col justify-center ml-3'>
-                    <ArrowLeft className='text-red-imperial font-bold' size={34}></ArrowLeft>
+                    <button onClick={()=>router.push('/checkout')}>
+                        <ArrowLeft className='text-red-imperial font-bold' size={34}></ArrowLeft>
+                    </button>
                 </div>
-                <div className='mr-3 my-6'>
+                <div className='flex flex-col justify-center mr-3'>
                     <ImageContent src={conpec.src} alt='logo' className='size-16'></ImageContent>
                 </div>
             </div>
-            <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col h-3/5 w-4/5 justify-between'>
-                <div className='flex flex-row justify-center'>
-                    <h1 className='text-5xl caret-transparent select-none font-semibold text-orange-coquelicot'>Informações</h1>
+            <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col grow w-4/5 justify-between'>
+                <div className='flex flex-col justify-evenly h-3/4'>
+                    <div className='flex flex-row justify-center'>
+                        <h1 className='text-5xl caret-transparent select-none font-semibold text-orange-coquelicot'>Informações</h1>
+                    </div>
+                    <div>
+
+                    <h1 className=' caret-transparent select-none font-extrabold text-orange-linear text-large'>Nome</h1>
+                    <input {...register("name")} type="text" placeholder='Inserir nome'
+                    className='rounded-full px-7 font-extrabold text-sm py-4 text-orange-600 w-full placeholder-orange-sandy border-1 border-orange-peach'/>
+                    {errors.name && (
+                        <p className="text-slate-200">{errors.name.message}</p>
+                    )}
+
+                    <h1 className=' caret-transparent select-none font-extrabold text-orange-linear text-base'>Email</h1>
+                    <input {...register("email")}  type="email" placeholder='Inserir email' 
+                    className='rounded-full px-7 font-extrabold text-sm py-4 text-orange-600 w-full placeholder-orange-sandy border-1 border-orange-peach'/>
+                    {errors.email && (
+                        <p className="text-slate-200">{errors.email.message}</p>
+                    )}
+
+                    </div>
+
                 </div>
-                <div>
-
-                <h1 className=' caret-transparent select-none font-extrabold text-orange-linear text-large'>Nome</h1>
-                <input {...register("name")} type="text" placeholder='Inserir nome'
-                className='rounded-full px-7 font-extrabold text-sm py-4 text-orange-600 w-full placeholder-orange-sandy border-1 border-orange-peach'/>
-                {errors.name && (
-                    <p className="text-slate-200">{errors.name.message}</p>
-                )}
-
-                <h1 className=' caret-transparent select-none font-extrabold text-orange-linear text-base'>Email</h1>
-                <input {...register("email")}  type="email" placeholder='Inserir email' 
-                className='rounded-full px-7 font-extrabold text-sm py-4 text-orange-600 w-full placeholder-orange-sandy border-1 border-orange-peach'/>
-                {errors.email && (
-                    <p className="text-slate-200">{errors.email.message}</p>
-                )}
-
+                <div className='flex flex-col justify-evenly items-center h-3/4'>
+                    <Button disabled={isSubmitting} transition='shadow' className='font-extrabold text-lg text-tertiary px-14 py-6 select-none bg-orange-linear rounded-full'>
+                    {   isSubmitting ? "Carregando..." : "Enviar"}
+                    </Button>
                 </div>
             </form>
-            <div className='flex flex-col justify-evenly h-3/4 w-1/3'>
-                <div>
-
-                </div>
-                <Button disabled={isSubmitting} transition='shadow' className='font-extrabold text-lg text-tertiary py-6 select-none bg-orange-linear rounded-full'>
-                {   isSubmitting ? "Carregando..." : "Enviar"}
-                </Button>
-            </div>
             <Toaster position="bottom-left" richColors closeButton />
         </div>
     );
