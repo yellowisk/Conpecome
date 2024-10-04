@@ -48,7 +48,7 @@ export default function Checkout() {
                     <div className="flex flex-col items-center justify-center row-span-5 my-5">
                         <div className="flex flex-col space-y-4">
                             <div className="flex flex-col items-center space-y-4 justify-center">
-                                <h1 className="text-4xl text-orange-strong uppercase caret-transparent select-none font-semibold">E O PIX?</h1>
+                                <h1 className="text-4xl text-orange-coquelicot upppercase caret-transparent select-none font-semibold">SEU PEDIDO</h1>
                                 <ImageContent src={pix.src} alt='E o pix?' className='w-40'/>
                             </div>
                             <div className="flex flex-row items-center space-x-3 justify-center">
@@ -97,3 +97,6 @@ export default function Checkout() {
         </div>
     );
 }
+
+//TODO:
+//mudar cor de fundo para 
