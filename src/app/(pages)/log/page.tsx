@@ -1,12 +1,11 @@
 "use client"
-import pictures  from '@/assets/pictures/pictures';
-import { updateQuantityById, SheetData, addClientData } from '../../../../sheetdb/sheets';
 import { Toaster, toast } from 'sonner';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
 import { ArrowLeft } from 'lucide-react';
 import ImageContent from '@/components/ui/image';
+
 import conpec from '@assets/conpeclogo.png';
 
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -25,8 +24,6 @@ export default function Log() {
     const router = useRouter();
 
     const saveInput = (email: string) => {
-
-        console.log("AAAAAA")
         toast.success('Marcha, bom ao mosso!')
         setTimeout(() => {
             router.push('/')
@@ -43,14 +40,20 @@ export default function Log() {
       });
 
       const onSubmit: SubmitHandler<FormFields> = async (data) => {
-        console.log("a")
         try {
             saveInput(data.email)
         } catch (error) {
-            toast.error('Eita, deu ruim!');
         }
       };
 
+    useEffect(() => {
+        if (errors.name) {
+            toast.error(errors.name.message);
+        }
+        if (errors.email) {
+            toast.error(errors.email.message);
+        }
+    }, [errors]);
 
     return (
         <div className='flex flex-col space-y-3 items-center caret-transparent h-screen bg-orange-antique '>
@@ -59,31 +62,23 @@ export default function Log() {
                     <ArrowLeft className='text-red-imperial font-bold' size={34}></ArrowLeft>
                 </div>
                 <div className='mr-3'>
-                <ImageContent src={conpec.src} alt='logo' className='size-16'></ImageContent>
+                    <ImageContent src={conpec.src} alt='logo' className='size-16'></ImageContent>
                 </div>
             </div>
             <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col justify-center border-3 border-orange-linear h-4/5'>
                 <h1 className='text-4xl caret-transparent select-none font-semibold text-orange-coquelicot'>Informações</h1>
                 
                 <h1 className=' caret-transparent select-none font-semibold text-orange-linear text-base'>Nome</h1>
-                <input {...register("name")} type="email" placeholder='Inserir nome'
+                <input {...register("name")} placeholder='Inserir nome'
                 className='rounded-xl px-2 font-extrabold text-lg py-3 text-orange-600 w-full placeholder-orange-pale'/>
-                {errors.name && (
-                    <p className="text-slate-200">{errors.name.message}</p>
-                )}
 
                 <h1 className=' caret-transparent select-none font-semibold text-orange-linear text-base'>Email</h1>
-                <input {...register("email")}  type="email" placeholder='Inserir email' 
+                <input {...register("email")} placeholder='Inserir email' 
                 className='rounded-xl px-2 font-extrabold text-lg py-3 text-orange-600 w-full placeholder-orange-pale'/>
-                {errors.email && (
-                    <p className="text-slate-200">{errors.email.message}</p>
-                )}
+                <Button disabled={isSubmitting} variant='orange' transition='shadow' className='rounded-xl font-extrabold text-lg text-tertiary py-6 select-none'>
+                    {   isSubmitting ? "Carregando..." : "Enviar"}
+                </Button>
             </form>
-            <div>
-            <Button disabled={isSubmitting} variant='orange' transition='shadow' className='rounded-xl font-extrabold text-lg text-tertiary py-6 select-none'>
-            {   isSubmitting ? "Carregando..." : "Enviar"}
-            </Button>
-            </div>
             <Toaster position="bottom-left" richColors closeButton />
         </div>
     );
