@@ -20,7 +20,7 @@ const config = {
       fontFamily: {
         roboto: ['var(--font-roboto)'],
         poppins: ['var(--font-poppins)'],
-        pixelify: ['var(--font-pixelify_sans']
+        pixelify: ['var(--font-pixelify-sans)']
       },
       colors: {
         number:
