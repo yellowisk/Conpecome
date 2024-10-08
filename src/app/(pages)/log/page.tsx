@@ -8,7 +8,6 @@ import { useRouter } from 'next/navigation';
 import { ArrowLeft } from 'lucide-react';
 import ImageContent from '@/components/ui/image';
 import conpec from '@assets/conpeclogo.png';
-
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { z } from "zod";
@@ -89,6 +88,7 @@ export default function Log() {
 
                 </div>
                 <div className='flex flex-col justify-evenly items-center h-3/4'>
+                    <div></div>
                     <Button disabled={isSubmitting} transition='shadow' className='font-extrabold text-lg text-tertiary px-14 py-6 select-none bg-orange-linear rounded-full'>
                     {   isSubmitting ? "Carregando..." : "Enviar"}
                     </Button>
