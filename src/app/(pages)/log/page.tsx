@@ -66,23 +66,30 @@ export default function Log() {
             <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col grow w-4/5 justify-between'>
                 <div className='flex flex-col justify-evenly h-3/4'>
                     <div className='flex flex-row justify-center'>
-                        <h1 className='text-5xl caret-transparent select-none font-semibold text-orange-coquelicot'>Informações</h1>
+                        <h1 className='font-pixelify text-5xl caret-transparent select-none font-semibold text-orange-coquelicot'>Informações</h1>
                     </div>
-                    <div>
+                <div>
 
-                    <h1 className=' caret-transparent select-none font-extrabold text-orange-linear text-large'>Nome</h1>
-                    <input {...register("name")} type="text" placeholder='Inserir nome'
-                    className='rounded-full px-7 font-extrabold text-sm py-4 text-orange-600 w-full placeholder-orange-sandy border-1 border-orange-peach'/>
-                    {errors.name && (
-                        <p className="text-slate-200">{errors.name.message}</p>
-                    )}
+                <div className='flex flex-row justify-center gap-2 w-full'>
+                    <div className='flex flex-col justify-center w-full md:w-2/3 h-full'>
+                        <h1 className='caret-transparent select-none font-extrabold text-orange-linear text-large'>Nome</h1>
+                        <input {...register("name")} type="text" placeholder='Inserir nome'                            
+                        className='rounded-full px-7 font-extrabold text-sm py-4 text-orange-600 w-full placeholder-orange-sandy border-1 border-orange-peach'/>
+                    </div>
+                </div>
 
-                    <h1 className=' caret-transparent select-none font-extrabold text-orange-linear text-base'>Email</h1>
-                    <input {...register("email")}  type="email" placeholder='Inserir email' 
-                    className='rounded-full px-7 font-extrabold text-sm py-4 text-orange-600 w-full placeholder-orange-sandy border-1 border-orange-peach'/>
-                    {errors.email && (
-                        <p className="text-slate-200">{errors.email.message}</p>
-                    )}
+                <div className='flex flex-row justify-center w-full'>
+                    <div className='flex flex-col justify-center w-full md:w-2/3 h-full'>
+                        <h1 className=' caret-transparent select-none font-extrabold text-orange-linear text-base'>Email</h1>
+                        <input {...register("email")}  type="email" placeholder='Inserir email' 
+                        className='rounded-full px-7 font-extrabold text-sm py-4 text-orange-600 w-full lg:w-3/4 placeholder-orange-sandy border-1 border-orange-peach'/>
+                        {errors.email && (
+                            <p className="text-slate-200">{errors.email.message}</p>
+                        )}
+                    </div>
+                </div>
+                        
+                    
 
                     </div>
 

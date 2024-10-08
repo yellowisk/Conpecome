@@ -36,7 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="">
       <body 
-        className={twMerge(inter.className, `${roboto_init.variable} ${poppins_init.variable}`)}>
+        className={twMerge(inter.className, `${roboto_init.variable} ${poppins_init.variable} ${pixel_init.variable}`)}>
           <ThemeProvider 
             attribute="class"
             defaultTheme="light"
