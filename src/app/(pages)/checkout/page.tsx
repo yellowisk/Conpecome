@@ -62,8 +62,8 @@ export default function Checkout() {
                         </div>
                     </div>
                     
-                    <div className='flex flex-col justify-start text-lg items-center grow w-screen'>
-                        <h1 className='font-bold text-5x1'>SEU PEDIDO</h1>
+                    <div className='flex flex-col justify-start items-center grow w-screen'>
+                        <h1 className='font-bold text-orange-coquelicot text-4xl'>SEU PEDIDO</h1>
                         <div className=''><ImageContent src = {pix.src} alt = 'pix-logo' className='size-24'></ImageContent></div>
                         <div className='flex flex-row justify-center'>
 
