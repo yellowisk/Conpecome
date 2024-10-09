@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { twMerge } from "tailwind-merge";
 import { ThemeProvider } from "@/components/theme-provider";
-import { Roboto, Poppins, Anton, Pixelify_Sans } from "next/font/google";
+import { Roboto, Poppins, Pixelify_Sans } from "next/font/google";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,8 +26,8 @@ const poppins_init = Poppins({
 
 const pixel_init = Pixelify_Sans({
   subsets: ['latin'],
-  weight: ['400', '500', '700'],
-  variable: '--font-pixelify_sans'
+  weight: ['400', '500', '600', '700'],
+  variable: '--font-pixelify-sans'
 });
 
 export default function RootLayout({
@@ -36,7 +36,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="">
       <body 
-        className={twMerge(inter.className, `${roboto_init.variable} ${poppins_init.variable}`)}>
+        className={twMerge(inter.className, `${roboto_init.variable} ${poppins_init.variable} ${pixel_init.variable}`)}>
           <ThemeProvider 
             attribute="class"
             defaultTheme="light"
