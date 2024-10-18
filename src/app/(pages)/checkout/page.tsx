@@ -1,8 +1,7 @@
 'use client'
-import ImageContent from '@/components/ui/image';
 import { useEffect, useState } from 'react';
+import Image from 'next/image';
 import pix from '@/assets/pix-icon.png';
-import { Button } from '@/components/ui/button';
 import { Toaster, toast } from 'sonner';
 import { ArrowLeft } from 'lucide-react';
 import { useRouter } from 'next/navigation';
@@ -28,7 +27,7 @@ export default function Checkout() {
                     }, 3000);
                 } catch (error) {
                     console.error('Error fetching data:', error);
-                    setIsLoading(false); // Ensure loading state is cleared in case of error
+                    setIsLoading(false);
                 }
             };
             fetchData();
@@ -58,13 +57,13 @@ export default function Checkout() {
                             </button>
                         </div>
                         <div className='flex flex-col justify-center mr-3'>
-                            <ImageContent src={conpec.src} alt='logo' className='size-16'></ImageContent>
+                            <Image src={conpec.src} alt='logo' className='size-16'></Image>
                         </div>
                     </div>
                     
                     <div className='flex flex-col justify-start items-center grow w-screen'>
                         <h1 className='font-bold text-orange-coquelicot text-4xl'>SEU PEDIDO</h1>
-                        <div className=''><ImageContent src = {pix.src} alt = 'pix-logo' className='size-24'></ImageContent></div>
+                        <div className=''><Image src={pix.src} alt='pix-logo' className='size-24'></Image></div>
                         <div className='flex flex-row justify-center'>
 
                         </div>

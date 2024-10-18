@@ -62,7 +62,7 @@ export default function Admin() {
                 {errors.password && (
                     <p className="text-slate-200">{errors.password.message}</p>
                 )}
-                <input {...register("password")} type="password" placeholder={"Password"} className='rounded-xl px-2 w-2/6 font-extrabold text-lg py-3 text-orange-600' />
+                <input {...register("password")} type="password" placeholder={"Password"} autoComplete='off' className='rounded-xl px-2 w-2/6 font-extrabold text-lg py-3 text-orange-600' />
                 <Button disabled={isSubmitting} type="submit" variant='orange' transition='shadow' className='rounded-xl font-extrabold text-lg text-tertiary py-6 select-none'>
                     {isSubmitting ? "Carregando..." : "Logar"}
                 </Button>
