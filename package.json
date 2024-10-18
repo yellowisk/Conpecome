@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
     "@hookform/resolvers": "^3.3.4",
     "@mui/lab": "^5.0.0-alpha.170",
     "@mui/material": "^6.1.1",
