@@ -1,12 +1,10 @@
 "use client"
 import pictures from '@/assets/pictures/pictures';
-import { updateQuantityById, SheetData, addClientData } from '../../../../sheetdb/sheets';
 import { Toaster, toast } from 'sonner';
-import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { useRouter } from 'next/navigation';
 import { ArrowLeft } from 'lucide-react';
-import ImageContent from '@/components/ui/image';
+import Image from 'next/image';
 import conpec from '@assets/conpeclogo.png';
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
@@ -60,7 +58,7 @@ export default function Log() {
                     </button>
                 </div>
                 <div className='flex flex-col justify-center mr-3'>
-                    <ImageContent src={conpec.src} alt='logo' className='size-16'></ImageContent>
+                    <Image src={conpec.src} alt='logo' className='size-16'></Image>
                 </div>
             </div>
             <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col grow w-4/5 justify-between'>
