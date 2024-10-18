@@ -36,7 +36,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" suppressHydrationWarning>
       <body
-        className={twMerge(inter.className, `${roboto_init.variable} ${poppins_init.variable} ${pixel_init.variable}`)}>
+        className={twMerge(inter.className, `${roboto_init.variable} ${poppins_init.variable} ${pixel_init.variable} antialiased`)}>
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
