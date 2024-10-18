@@ -34,7 +34,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode; }>) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" suppressHydrationWarning>
       <body
         className={twMerge(inter.className, `${roboto_init.variable} ${poppins_init.variable} ${pixel_init.variable}`)}>
         <ThemeProvider
