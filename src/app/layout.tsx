@@ -34,18 +34,18 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode; }>) {
   return (
-    <html lang="en" className="">
-      <body 
+    <html lang="pt-BR">
+      <body
         className={twMerge(inter.className, `${roboto_init.variable} ${poppins_init.variable} ${pixel_init.variable}`)}>
-          <ThemeProvider 
-            attribute="class"
-            defaultTheme="light"
-            enableSystem
-            disableTransitionOnChange
-          >
-            {children}
-          </ThemeProvider>      
-        </body> 
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
+      </body>
     </html>
   );
 }
