@@ -1,13 +1,12 @@
 "use client"
-import pictures  from '@/assets/pictures/pictures';
 import { Toaster, toast } from 'sonner';
-import { use, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Button } from '@/components/ui/button';
-
+import Image from 'next/image';
 import { collection, doc, getDocs, updateDoc, addDoc } from 'firebase/firestore';
 import { db, storage } from '@firebase/firebase-config';
 import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
-import { Product } from '@/firebase/schema/entities';
+import { Product, User } from '@/firebase/schema/entities';
 import { useRouter } from 'next/navigation';
 
 export default function Products() {
@@ -16,17 +15,18 @@ export default function Products() {
     const [price, setPrice] = useState(0);
     const [type, setType] = useState('');
     const [amount, setAmount] = useState(0);
-    const [imageurl, setImageurl] = useState('');
     const [file, setFile] = useState<File | null>(null);
     const [products, setProducts] = useState<Product[]>([]);
+    const [loading, setLoading] = useState(true);
+    const [user, setUser] = useState<User | null>(null);
 
     const productCollectionRef = collection(db, 'products');
     const router = useRouter();
-    const user = localStorage.getItem('user');
-
-    console.log('User:', JSON.parse(user));
 
     useEffect(() => {
+        const user = JSON.parse(localStorage.getItem('user') || '{}');
+        setUser(user);
+        setLoading(false);
 
         const fetchProducts = async () => {
             try {
@@ -71,14 +71,6 @@ export default function Products() {
                 (snapshot) => {
                     const progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
                     console.log('Upload is ' + progress + '% done');
-                    switch (snapshot.state) {
-                        case 'paused':
-                            console.log('Upload is paused');
-                            break;
-                        case 'running':
-                            console.log('Upload is running');
-                            break;
-                    }
                 },
                 (error) => {
                     console.error('Error uploading image:', error);
@@ -104,7 +96,6 @@ export default function Products() {
                         });
                         setProducts(productList);
                         console.log('Products:', productList); // Ensure the updated list is logged
-    
                     } catch (error) {
                         console.error('Error updating product:', error);
                         toast.error('Erro ao atualizar produto com imagem');
@@ -117,7 +108,9 @@ export default function Products() {
         }
     };
     
-
+    if (loading) {
+        return <></>
+    }
 
     return (
         (user) ? (
@@ -126,7 +119,11 @@ export default function Products() {
             <input type="number" onChange={(e) => setPrice(Number(e.target.value))} className='rounded-xl px-2 w-2/6 font-extrabold text-lg py-3 text-orange-600'/>
             <input type="text" onChange={(e) => setType(e.target.value)} className='rounded-xl px-2 w-2/6 font-extrabold text-lg py-3 text-orange-600'/>
             <input type="number" onChange={(e) => setAmount(Number(e.target.value))} className='rounded-xl px-2 w-2/6 font-extrabold text-lg py-3 text-orange-600'/>
-            <input type="file" onChange={(e) => setFile(e.target.files[0])} className='rounded-xl px-2 w-2/6 font-extrabold text-lg py-3 text-orange-600'/>
+            <input type="file" onChange={(e) => {
+                if (e.target.files && e.target.files.length > 0) {
+                    setFile(e.target.files[0]);
+                }
+            }} className='rounded-xl px-2 w-2/6 font-extrabold text-lg py-3 text-orange-600'/>
             <Button onClick={handleAddProduct} variant='orange' transition='shadow' className='rounded-xl font-extrabold text-lg text-tertiary py-6 select-none'>Adicionar ao Estoque</Button>
             
 
@@ -134,7 +131,7 @@ export default function Products() {
                 <h1 className='text-4xl text-tertiary uppercase select-none font-semibold'>Produtos</h1>
                 {products.map((product) => (
                     <div key={product.id} className='flex flex-row justify-center space-x-28 items-center'>
-                        <img src={product.imageurl} alt={product.name} className='h-10 w-10'/>
+                        <Image src={product.imageurl} alt={product.name} width={10} height={10} className='h-10 w-10'/>
                         <p className='text-lg text-tertiary'>{product.name}</p>
                         <p className='text-lg text-tertiary'>{product.price}</p>
                         <p className='text-lg text-tertiary'>{product.type}</p>
@@ -146,7 +143,7 @@ export default function Products() {
             <Toaster position="bottom-left" richColors closeButton />
         </div>
         ) : (
-            router.push('/adm/login')
+            router.push('adm/login')
         )
         
     );
