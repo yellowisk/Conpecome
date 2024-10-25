@@ -59,7 +59,7 @@ export default function Log() {
                     </button>
                 </div>
                 <div className='flex flex-col justify-center mr-3'>
-                    <Image src={conpec.src} alt='logo' className='size-16'></Image>
+                    <Image width={10} height={10} src={conpec.src} alt='logo' className='size-16'></Image>
                 </div>
             </div>
             <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col grow w-4/5 justify-between'>

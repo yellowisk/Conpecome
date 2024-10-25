@@ -1,5 +1,5 @@
 "use client"
-import ImageContent from '@/components/ui/image';
+import Image from 'next/image';
 import { ArrowLeft } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import conpec from '@assets/conpeclogo.png';
@@ -22,7 +22,7 @@ export default function Editor (){
                     </button>
                 </div>
                 <div className='flex flex-col justify-center mr-3'>
-                    <ImageContent src={conpec.src} alt='logo' className='size-16'></ImageContent>
+                    <Image src={conpec.src} alt='logo' width={64} height={64}></Image>
                 </div>
             </div>
             
@@ -32,33 +32,33 @@ export default function Editor (){
                 <div className='flex flex-row justify-center border-1 border-orange-linear h-1/6 w-2/3 rounded-3xl'>
                     <button className='flex flex-col justify-center items-center w-1/3'>
                         <div className='flex flex-row justify-end w-4/5'>
-                            <ImageContent src={editor_icon.src} alt='editor_icon' className='size-4'></ImageContent>
+                            <Image src={editor_icon.src} alt='editor_icon' width={16} height={16}></Image>
                         </div>
 
-                        <ImageContent src={image_upload.src} alt='image_upload_icon' className='size-16'></ImageContent>
+                        <Image src={image_upload.src} alt='image_upload_icon' width={64} height={64}></Image>
                         
                     </button>
 
                     <div className='flex flex-col justify-evenly w-2/3'>
                         <div className='flex flex-row justify-evenly w-2/3 font-poppins text-orange-linear font-semibold'>
                             <h1>Inserir nome</h1>
-                            <ImageContent src={editor_icon.src} alt='editor_icon' className='size-4'></ImageContent>
+                            <Image src={editor_icon.src} alt='editor_icon' width={16} height={16}></Image>
                         </div>
 
                         <div className='flex flex-row justify-evenly w-2/3 font-poppins text-orange-linear font-semibold'>
                             <h1>Inserir preço</h1>
-                            <ImageContent src={editor_icon.src} alt='editor_icon' className='size-4'></ImageContent>
+                            <Image src={editor_icon.src} alt='editor_icon' width={16} height={16}></Image>
                         </div>
 
                         <div className='flex flex-row justify-evenly'>
                             <button>
-                                <ImageContent src={remove_icon.src} alt='remove_icon' className='size-7'></ImageContent>
+                                <Image src={remove_icon.src} alt='remove_icon' width={28} height={28}></Image>
                             </button>
 
                             <h1 className='text-orange-linear font-bold'>0</h1>
 
                             <button>
-                            <ImageContent src={add_icon.src} alt='add_icon' className='size-7'></ImageContent>
+                            <Image src={add_icon.src} alt='add_icon' width={28} height={28}></Image>
                             </button>
                         </div>
 

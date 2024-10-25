@@ -81,14 +81,14 @@ export default function Checkout() {
                             </button>
                         </div>
                         <div className='flex flex-col justify-center mr-3'>
-                            <Image src={conpec.src} alt='logo' className='size-16'></Image>
+                            <Image src={conpec.src} alt='logo' height={64} width={64}></Image>
                         </div>
                     </div>
 
                     
                     <div className='flex flex-col justify-evenly items-center grow w-screen'>
                         <h1 className='font-bold text-orange-coquelicot text-5xl font-pixelify'>SEU PEDIDO</h1>
-                        <div><Image src = {pix.src} alt = 'pix-logo' className='size-40'></Image></div>
+                        <div><Image src = {pix.src} alt = 'pix-logo' height={160} width={160}></Image></div>
                         <div className = 'flex flex-row justify-evenly w-screen'>
 
                             <div className='flex flex-row justify-center rounded-full border-1 border-orange-apricot py-4 w-2/3 bg-white'><h1 className='text-gray-500 font-poppins font-bold'>{process.env.NEXT_PUBLIC_PIX_CODE}</h1></div>
