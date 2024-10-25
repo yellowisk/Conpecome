@@ -5,7 +5,7 @@ import { ArrowLeft, ComponentIcon} from "lucide-react";
 import React, { useState } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
 import conpec from '@/assets/conpeclogo.png'
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export default function logAdmin() {
 
@@ -18,7 +18,7 @@ export default function logAdmin() {
     const router = useRouter();
 
     const goToHome = () => {
-        router.push('@src/app/page.tsx');
+        router.push('/');
     };
 
     return(
@@ -26,7 +26,7 @@ export default function logAdmin() {
             <div className="flex flex-col items-center w-full h-1/3 pt-3">
                 <div className="flex flex-row w-1/2 h-1/3 border-10 items-center">
                     <div className="w-1/2 pl-5">
-                        <ArrowLeft onClick={goToHome}={} "className='text-red-imperial font-bold' size={34}></ArrowLeft> {/*Essa seta tem que fazer algo*/}    
+                        <ArrowLeft  onClick={goToHome} className='cursor-pointer hover:text-dark-red hover:scale-105 text-orange-strong font-bold' size={34}></ArrowLeft> {/*Essa seta tem que fazer algo*/}    
                     </div>
                     <div className="flex flex-row w-1/2 justify-end pr-5">
                         <Image src={conpec.src} alt='logo' width={100} height= {100} className='size-16'></Image>
