@@ -26,7 +26,7 @@ export default function logAdmin() {
             <div className="flex flex-col items-center w-full h-1/3 pt-3">
                 <div className="flex flex-row w-1/2 h-1/3 border-10 items-center">
                     <div className="w-1/2 pl-5">
-                        <ArrowLeft  onClick={goToHome} className='cursor-pointer hover:text-dark-red hover:scale-105 text-orange-strong font-bold' size={34}></ArrowLeft> {/*Essa seta tem que fazer algo*/}    
+                        <ArrowLeft  onClick={goToHome} className='cursor-pointer hover:text-dark-red hover:scale-105 text-orange-strong font-bold' size={34}></ArrowLeft> {/*Essa seta tem que fazer algo*/}
                     </div>
                     <div className="flex flex-row w-1/2 justify-end pr-5">
                         <Image src={conpec.src} alt='logo' width={100} height= {100} className='size-16'></Image>
@@ -40,9 +40,8 @@ export default function logAdmin() {
                 <div className=" w-1/2 h-1/3 pb-3 " > {/*nome*/} 
                     <div className="flex flex-row justify-start w-fit h-2/5 text-orange-linear text font-poppins font-bold text-base ml-5 pt-2">
                     Nome
-                    </div>  
+                    </div>
                     <input type="word" placeholder="Insira seu nome" className="flex flex-row w-full placeholder-orange-strong placeholder-opacity-60 h-3/5 text-sm bg-background border-orange-strong border-2 rounded-full stroke-orange-strong border-opacity-40 justify-start pl-3 font-poppins font-bold text-orange-strong items-center focus:outline-none focus:ring-2 focus:ring-orange-strong focus" ></input>
-
                 </div>
                 <div className=" w-1/2 h-1/3 pb-3"> {/*email*/}
                     <div className="flex flex-row justify-start w-fit h-2/5 text-orange-linear text font-poppins font-bold text-base ml-5 pt-2">Email</div>
