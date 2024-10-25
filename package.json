@@ -15,7 +15,7 @@
     "@mui/material": "^6.1.1",
     "@nextui-org/react": "^2.4.0",
     "@radix-ui/react-checkbox": "^1.1.1",
-    "axios": "^1.6.8",
+    "axios": "^1.7.4",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
     "embla-carousel-class-names": "^8.1.1",
