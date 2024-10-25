@@ -20,7 +20,7 @@ const config = {
       fontFamily: {
         roboto: ['var(--font-roboto)'],
         poppins: ['var(--font-poppins)'],
-        pixelify: ['var(--font-pixelify_sans']
+        pixelify: ['var(--font-pixelify-sans)']
       },
       colors: {
         number:
@@ -46,7 +46,6 @@ const config = {
       themes: {
         "light": {
           colors: {
-            background: "#ffffff",
             primary: 'rgba(60, 47, 47, 1)',
             secondary: '#6A6A6A',
             tertiary: "rgb(241 245 249)",
