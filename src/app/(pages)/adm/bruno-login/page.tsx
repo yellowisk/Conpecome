@@ -3,7 +3,7 @@ import { Toaster, toast } from 'sonner';
 import { Button } from "@mui/material";
 import Image from "next/image";
 import { ArrowLeft, ComponentIcon} from "lucide-react";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Eye, EyeOff } from 'lucide-react';
 import conpec from '@/assets/conpeclogo.png'
 import { useRouter } from "next/navigation";
@@ -18,7 +18,7 @@ import { z } from "zod";
 const schema = z.object({
     email: z.string().email({ message: "Email inválido!" }).min(1),
     password: z.string().min(1, { message: "Senha inválida"}),  
-  });
+    });
   
 type FormFields = z.infer<typeof schema>;
 
@@ -43,7 +43,15 @@ export default function LogAdmin() {
         formState: { errors, isSubmitting },
       } = useForm<FormFields>({
         resolver: zodResolver(schema),
-      });
+    });
+
+
+
+    useEffect(() => {
+        if (errors.email) {
+            toast.error(errors.email.message);
+        }
+    }, [errors.email]);
 
       const onSubmit: SubmitHandler<FormFields> = async (data) => {
         try {
@@ -58,13 +66,14 @@ export default function LogAdmin() {
                 }, 2000);
             }
         } catch (error) {
+            console.log(data.email, data.password);
             toast.error('Eita, deu ruim!');
         }
       };
 
     return (
         <div className="flex flex-col bg-orange-seashell h-screen w-screen">
-            <Toaster />
+            <Toaster richColors closeButton/>
             <div className="flex flex-col items-center w-full h-1/3 pt-3">
                 <div className="flex flex-row w-2/3 h-1/3 items-center">
                     <div className="w-full pl-4">
@@ -81,9 +90,6 @@ export default function LogAdmin() {
             <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col items-center w-full h-1/2">
                 <div className="w-2/3 h-1/4 pb-6">
                     <div className="flex flex-row justify-start w-fit h-2/5 text-orange-linear text font-poppins font-bold text-base ml-5 pt-2">Email</div>
-                    {errors.email && (
-                        <p className="text-slate-200">{errors.email.message}</p>
-                    )}
                     <input
                         type="text"
                         placeholder="Insira seu email"
